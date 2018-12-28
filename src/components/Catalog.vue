@@ -58,7 +58,7 @@ export default {
           this.page = this.$route.query.page;
       }
 
-      this.offset = (this.page - 1) * (this.limit + 1);
+      this.offset = (this.page - 1) * this.limit;
 
       axios.get('/v3/diamond?limit=' + this.limit + '&offset=' + this.offset).then(res => {
           this.diamonds = res.data;
