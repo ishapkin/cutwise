@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import client from '../services/client'
+import axios from 'axios'
 
 export default {
   name: 'Catalog',
@@ -46,7 +46,7 @@ export default {
       return {
           diamonds: [],
           offset: 0,
-          limit: 12,
+          limit: 8,
           pages: [],
           total: 0,
           page: 1,
@@ -60,7 +60,7 @@ export default {
 
       this.offset = (this.page - 1) * (this.limit + 1);
 
-      client.get('/v3/diamond?limit=' + this.limit + '&offset=' + this.offset).then(res => {
+      axios.get('/v3/diamond?limit=' + this.limit + '&offset=' + this.offset).then(res => {
           this.diamonds = res.data;
           this.total = res.headers['x-total-count'];
           for(let i = 0; i < Math.ceil(this.total/this.limit); i++) {
@@ -71,12 +71,12 @@ export default {
     methods: {
       paginate(page) {
           this.page = page;
-          this.offset = (page - 1) * (this.limit + 1);
-          client.get('/v3/diamond?limit=' + this.limit + '&offset=' + this.offset)
+          this.offset = (page - 1) * this.limit;
+          axios.get('/v3/diamond?limit=' + this.limit + '&offset=' + this.offset)
               .then(res => {
                 this.diamonds = res.data;
                 this.$router.push({
-                        path: '/',
+                        path: '/products',
                         query: { page: this.page }
                     })
           })

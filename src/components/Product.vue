@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import client from '../services/client'
+import axios from 'axios'
 
 export default {
   name: 'Product',
@@ -101,14 +101,14 @@ export default {
     },
     mounted() {
         if(!this.constants) {
-            client.get('/v2/constants')
+            axios.get('/v2/constants')
                 .then(res => {
                     this.constants = res.data;
                     localStorage.setItem('constants', JSON.stringify(this.constants))
                 })
         }
 
-        client.get('/v3/diamond/' + this.$route.params.id)
+        axios.get('/v3/diamond/' + this.$route.params.id)
             .then(res => {
                 this.diamond = res.data;
                 this.iframe.src = 'https://cutwise.com/widget/video/' + this.diamond.id
