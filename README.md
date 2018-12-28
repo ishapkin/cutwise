@@ -3,7 +3,13 @@
 ## Project setup
 ```
 npm install
+````
+
 ```
+cd src
+cp config.dist.js config.js
+````
+Add your credentials into
 
 ### Compiles and hot-reloads for development
 ```
