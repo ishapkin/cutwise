@@ -17,7 +17,7 @@
         </div>
       </div>
     </nav>
-    <Catalog/>
+    <router-view/>
   </div>
 </template>
 

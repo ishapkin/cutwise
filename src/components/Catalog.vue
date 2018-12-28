@@ -19,7 +19,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ diamond.date|formatDate }}</h5>
               <p class="card-text">{{ diamond.sku }}</p>
-              <a href="#" class="btn btn-primary">More info</a>
+              <router-link class="btn btn-primary" :to="{ name: 'Product', params: { id: diamond.id }}">More info</router-link>
             </div>
             </div>
         </div>
