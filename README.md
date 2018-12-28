@@ -1,4 +1,4 @@
-# cutwise
+# Cutwise API example
 
 ## Project setup
 ```
