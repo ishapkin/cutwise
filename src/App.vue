@@ -22,19 +22,13 @@
 </template>
 
 <script>
-import Catalog from './components/Catalog.vue'
-import Product from './components/Product'
 import Vue from 'vue';
 import moment from 'moment'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
-  name: 'app',
-  components: {
-    Catalog,
-    Product
-  }
+  name: 'app'
 }
 Vue.filter('formatDate', function(value) {
     if (value) {
